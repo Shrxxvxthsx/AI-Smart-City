@@ -1,0 +1,76 @@
+{
+  "entities": {
+    "CitizenReport": {
+      "title": "Citizen Report",
+      "description": "A report filed by a citizen regarding city issues.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "citizenId": { "type": "string" },
+        "citizenName": { "type": "string" },
+        "category": { "type": "string", "enum": ["traffic", "pollution", "waste", "water", "energy", "agriculture", "safety"] },
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "location": {
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number" },
+            "lng": { "type": "number" },
+            "address": { "type": "string" }
+          }
+        },
+        "status": { "type": "string", "enum": ["pending", "in-progress", "resolved", "escalated"] },
+        "priority": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "aiAnalysis": {
+          "type": "object",
+          "properties": {
+            "summary": { "type": "string" },
+            "predictedImpact": { "type": "string" },
+            "suggestedActions": { "type": "array", "items": { "type": "string" } },
+            "severityScore": { "type": "number" }
+          }
+        },
+        "assignedDept": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["citizenId", "category", "description", "location", "status"]
+    },
+    "CityMetric": {
+      "title": "City Metric",
+      "description": "Real-time or aggregated metrics for the city.",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["aqi", "traffic_load", "water_level", "energy_efficiency", "waste_collected"] },
+        "value": { "type": "number" },
+        "unit": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "region": { "type": "string" }
+      }
+    },
+    "Department": {
+      "title": "Department",
+      "description": "City governance department.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "headUid": { "type": "string" },
+        "kpis": { "type": "object" }
+      }
+    }
+  },
+  "firestore": {
+    "reports": {
+      "schema": "CitizenReport",
+      "description": "Collection of all citizen reports."
+    },
+    "metrics": {
+      "schema": "CityMetric",
+      "description": "Real-time city intelligence metrics."
+    },
+    "departments": {
+      "schema": "Department",
+      "description": "Information about city departments."
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "AI Smart City Intelligence Platform",
+  "description": "A futuristic smart city governance platform fusing Ancient Indian Knowledge Systems with modern AI intelligence for sustainable urban life.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["AI Governance", "Real-time Monitoring", "Sustainable Planning"]
+}

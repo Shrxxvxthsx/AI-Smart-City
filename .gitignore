@@ -1,0 +1,13 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Service account keys (never commit these!)
+firebase-admin-key.json
+supabase-service-key.json
+*-key.json
